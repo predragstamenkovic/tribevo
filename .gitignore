@@ -1,0 +1,11 @@
+/*
+/*/
+
+!.gitignore
+!.gitattributes
+!/Assets/
+!/ProjectSettings/
+!/Packages/
+!/Docs/
+!Diableros-upload.keystore
+Assets/Plugins/Android/FirebaseCrashlytics.androidlib/res/values/crashlytics_build_id.xml
