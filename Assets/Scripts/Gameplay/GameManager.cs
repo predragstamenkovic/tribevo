@@ -11,6 +11,8 @@ public class GameManager : MonoBehaviour
     private TerritoryManager territoryManager;
     [SerializeField]
     private EraManager eraManager;
+    [SerializeField]
+    private GamePlayPanel gamePlayPanel;
     private HostilityManager hostilityManager;
     public List<DifficultySetting> difficulties;
 
@@ -103,6 +105,7 @@ public class GameManager : MonoBehaviour
                     tribe.UpdateTribe();
                     hostilityManager.UpdateHostility();
                     UpdateGameState();
+                    gamePlayPanel.UpdateViews();
                 }
             }
         }
