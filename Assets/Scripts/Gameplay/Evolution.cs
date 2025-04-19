@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Data/Evolution")]
 public class Evolution : ScriptableObject
 {
     public string id;

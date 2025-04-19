@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Data/Station")]
 public class Station : ScriptableObject
 {
     public bool isUnique;

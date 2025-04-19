@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Data/Discovery")]
 public class Discovery : ScriptableObject
 {
     public GameEvent discoveryEvent;
