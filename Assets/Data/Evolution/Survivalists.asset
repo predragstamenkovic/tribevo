@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 196fe6bfe33ac4746a33026a7bbee52e, type: 3}
-  m_Name: Farming
+  m_Name: Survivalists
   m_EditorClassIdentifier: 
-  id: farming
-  evolutionName: Farming
+  id: survivalists
+  evolutionName: Survivalists
   effects:
   - isTemporary: 0
     activePeriod: 0
@@ -26,18 +26,19 @@ MonoBehaviour:
     mulPopGrowth: 0
     flatStationSlots: 0
     mulStationSlots: 0
-    flatDiscoverySpeed: 0
+    flatDiscoverySpeed: 2
     mulDiscoverySpeed: 0
     flatTerritoryGrowth: 0
-    mulTerritoryGrowth: 0
+    mulTerritoryGrowth: 1
     flatDefenceStrength: 0
     mulDefenceStrength: 0
   conditionalEffects: []
   stations:
-  - {fileID: 11400000, guid: ca3d1cb8cb0bd7143858316742eebe83, type: 2}
+  - {fileID: 11400000, guid: 1a55c0f20b7dd31448ffd02d99a45c33, type: 2}
   requiredEvolutionsAnd: []
   requiredEvolutionsOr: []
   requiredEventAnd: []
   requiredEventOr: []
   leadingEvolutions:
+  - {fileID: 11400000, guid: f8e46d877f2d9ed418b114f4c11893c2, type: 2}
   - {fileID: 11400000, guid: 689078a95b96ba44aa3731c9e942bbbd, type: 2}

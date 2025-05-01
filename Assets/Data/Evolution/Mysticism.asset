@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 196fe6bfe33ac4746a33026a7bbee52e, type: 3}
+  m_Name: Mysticism
+  m_EditorClassIdentifier: 
+  id: mysticism
+  evolutionName: Mysticism
+  effects: []
+  conditionalEffects: []
+  stations:
+  - {fileID: 11400000, guid: f6fa09b134b3c1645a5d8f0b2bd29ed8, type: 2}
+  requiredEvolutionsAnd: []
+  requiredEvolutionsOr:
+  - {fileID: 11400000, guid: dd7292ff8e2ca9341b869d8ac7fcaaf2, type: 2}
+  - {fileID: 11400000, guid: 6a5e01919a7d7b34c9168c2e70f5b79b, type: 2}
+  requiredEventAnd: []
+  requiredEventOr: []
+  leadingEvolutions: []

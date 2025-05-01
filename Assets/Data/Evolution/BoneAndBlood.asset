@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 196fe6bfe33ac4746a33026a7bbee52e, type: 3}
-  m_Name: Farming
+  m_Name: BoneAndBlood
   m_EditorClassIdentifier: 
-  id: farming
-  evolutionName: Farming
+  id: boneblood
+  evolutionName: Bone & Blood
   effects:
   - isTemporary: 0
     activePeriod: 0
     priority: 0
-    flatEvolution: 0
+    flatEvolution: 2
     mulEvolution: 0
     flatFood: 0
     mulFood: 0
@@ -28,16 +28,15 @@ MonoBehaviour:
     mulStationSlots: 0
     flatDiscoverySpeed: 0
     mulDiscoverySpeed: 0
-    flatTerritoryGrowth: 0
+    flatTerritoryGrowth: 1
     mulTerritoryGrowth: 0
-    flatDefenceStrength: 0
+    flatDefenceStrength: 1
     mulDefenceStrength: 0
   conditionalEffects: []
-  stations:
-  - {fileID: 11400000, guid: ca3d1cb8cb0bd7143858316742eebe83, type: 2}
-  requiredEvolutionsAnd: []
+  stations: []
+  requiredEvolutionsAnd:
+  - {fileID: 11400000, guid: a8c58e50e85b1464db3001a5eb96a733, type: 2}
   requiredEvolutionsOr: []
   requiredEventAnd: []
   requiredEventOr: []
-  leadingEvolutions:
-  - {fileID: 11400000, guid: 689078a95b96ba44aa3731c9e942bbbd, type: 2}
+  leadingEvolutions: []

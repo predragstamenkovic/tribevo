@@ -10,34 +10,34 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 196fe6bfe33ac4746a33026a7bbee52e, type: 3}
-  m_Name: Farming
+  m_Name: AnimalHandling
   m_EditorClassIdentifier: 
-  id: farming
-  evolutionName: Farming
+  id: animalhandling
+  evolutionName: Animal Handling
   effects:
   - isTemporary: 0
     activePeriod: 0
     priority: 0
     flatEvolution: 0
     mulEvolution: 0
-    flatFood: 0
+    flatFood: 1
     mulFood: 0
     flatPopGrowth: 0
     mulPopGrowth: 0
     flatStationSlots: 0
     mulStationSlots: 0
-    flatDiscoverySpeed: 0
+    flatDiscoverySpeed: 1
     mulDiscoverySpeed: 0
-    flatTerritoryGrowth: 0
+    flatTerritoryGrowth: 1
     mulTerritoryGrowth: 0
     flatDefenceStrength: 0
     mulDefenceStrength: 0
   conditionalEffects: []
-  stations:
-  - {fileID: 11400000, guid: ca3d1cb8cb0bd7143858316742eebe83, type: 2}
+  stations: []
   requiredEvolutionsAnd: []
-  requiredEvolutionsOr: []
+  requiredEvolutionsOr:
+  - {fileID: 11400000, guid: 6a5e01919a7d7b34c9168c2e70f5b79b, type: 2}
+  - {fileID: 11400000, guid: a8c58e50e85b1464db3001a5eb96a733, type: 2}
   requiredEventAnd: []
   requiredEventOr: []
-  leadingEvolutions:
-  - {fileID: 11400000, guid: 689078a95b96ba44aa3731c9e942bbbd, type: 2}
+  leadingEvolutions: []

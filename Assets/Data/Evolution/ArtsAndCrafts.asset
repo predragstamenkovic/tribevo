@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 196fe6bfe33ac4746a33026a7bbee52e, type: 3}
-  m_Name: Farming
+  m_Name: ArtsAndCrafts
   m_EditorClassIdentifier: 
-  id: farming
-  evolutionName: Farming
+  id: artsandcrafts
+  evolutionName: Arts & Crafts
   effects:
   - isTemporary: 0
     activePeriod: 0
     priority: 0
-    flatEvolution: 0
+    flatEvolution: 2
     mulEvolution: 0
     flatFood: 0
     mulFood: 0
@@ -33,11 +33,9 @@ MonoBehaviour:
     flatDefenceStrength: 0
     mulDefenceStrength: 0
   conditionalEffects: []
-  stations:
-  - {fileID: 11400000, guid: ca3d1cb8cb0bd7143858316742eebe83, type: 2}
+  stations: []
   requiredEvolutionsAnd: []
   requiredEvolutionsOr: []
   requiredEventAnd: []
   requiredEventOr: []
-  leadingEvolutions:
-  - {fileID: 11400000, guid: 689078a95b96ba44aa3731c9e942bbbd, type: 2}
+  leadingEvolutions: []

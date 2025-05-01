@@ -6,7 +6,9 @@ using UnityEngine;
 public class Evolution : ScriptableObject
 {
     public string id;
+    public string evolutionName;
     public List<StatEffect> effects;
+    public List<ConditionStatEffect> conditionalEffects;
     public List<Station> stations;
     public List<Evolution> requiredEvolutionsAnd;
     public List<Evolution> requiredEvolutionsOr;
