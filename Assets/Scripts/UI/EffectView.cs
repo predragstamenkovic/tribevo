@@ -35,7 +35,7 @@ public class EffectView : MonoBehaviour
         {
             phase = 0.0f;
             UpdateEffect();
-            if (statEffect.IsTimerDone)
+            if (statEffect.IsEffectDone)
                 manager.RemoveEffect(this);
         }
         phase += Time.deltaTime;

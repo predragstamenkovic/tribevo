@@ -18,4 +18,9 @@ public static class Utils
             elements[swapIndex] = elements[i];
         }
     }
+
+    public static T PickRandom<T>(this IEnumerable<T> source)
+    {
+        return source.ElementAt(Random.Range(0, source.Count()));
+    }
 }

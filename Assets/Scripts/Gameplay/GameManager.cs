@@ -3,6 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum GameState
+{
+    OUT,
+    INGAME,
+    PAUSED,
+    GAMEOVER
+}
+
 public class GameManager : MonoBehaviour
 {
     [SerializeField]
@@ -12,19 +20,23 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     private EraManager eraManager;
     [SerializeField]
+    private EventsManager eventsManager;
+    [SerializeField]
     private GamePlayPanel gamePlayPanel;
+    private EffectsManager effectsManager;
     private HostilityManager hostilityManager;
-    public List<DifficultySetting> difficulties;
+    [SerializeField]
+    private List<DifficultySetting> difficulties;
 
     private static GameManager instance;
 
+    private GameState state = GameState.OUT;
     private float period;
     private Tribe tribe;
     private TimeSpan sessionTime;
     private bool isPaused = false;
     private bool isPlaying = false;
     private DifficultySetting currentDifficulty;
-    private Dictionary<string, GameEvent> happenedEvents;
 
     public static GameManager Instance
     {
@@ -38,14 +50,11 @@ public class GameManager : MonoBehaviour
     public EvolutionsManager EvolutionsManager => evolutionsManager;
     public TerritoryManager TerritoryManager => territoryManager;
     public EraManager EraManager => eraManager;
+    public EventsManager EventsManager => eventsManager;
     public HostilityManager HostilityManager => hostilityManager;
+    public EffectsManager EffectsManager => effectsManager;
     public Tribe Tribe => tribe;
     public int GetSessionSeconds => (int)sessionTime.TotalSeconds;
-
-    public bool HasEventHappened(string eventId)
-    {
-        return happenedEvents.ContainsKey(eventId);
-    }
 
     private void Awake()
     {
@@ -88,36 +97,44 @@ public class GameManager : MonoBehaviour
         eraManager.PrepareEvents();
         territoryManager.GenerateMap();
         period = 0;
-        isPlaying = true;
+        state = GameState.INGAME;
     }
 
     private void Update()
     {
-        if (isPlaying)
+        if (state == GameState.INGAME)
         {
-            if (!isPaused)
+            var seconds = sessionTime.Seconds;
+            sessionTime += TimeSpan.FromSeconds(Time.deltaTime);
+            period += Time.deltaTime;
+            if (sessionTime.Seconds != seconds)
             {
-                var seconds = sessionTime.Seconds;
-                sessionTime += TimeSpan.FromSeconds(Time.deltaTime);
-                period += Time.deltaTime;
-                if (sessionTime.Seconds != seconds)
-                {
-                    tribe.UpdateTribe();
-                    hostilityManager.UpdateHostility();
-                    UpdateGameState();
-                    gamePlayPanel.UpdateViews();
-                }
+                tribe.UpdateTribe();
+                effectsManager.UpdateEffects();
+                hostilityManager.UpdateHostility();
+                gamePlayPanel.UpdateViews();
+                CheckGameOver();
             }
         }
     }
 
-    public void GameOver()
+    public void PauseGame()
+    {
+        state = GameState.PAUSED;
+    }
+
+    public void ResumeGame()
+    {
+        state = GameState.INGAME;
+    }
+
+    private void CheckGameOver()
     {
 
     }
 
-    private void UpdateGameState()
+    public void GameOver()
     {
-
+        state = GameState.GAMEOVER;
     }
 }

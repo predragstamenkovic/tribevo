@@ -28,7 +28,7 @@ public class TerritoryManager : MonoBehaviour
             discoveriesPerZone.Add(new List<Discovery>());
 
         for (int i = 0; i < discoveries.Count; i++)
-            discoveriesPerZone[discoveries[i].zone].Add(discoveries[i]);
+            discoveriesPerZone[discoveries[i].Zone].Add(discoveries[i]);
     }
 
     public void GenerateMap()
@@ -42,7 +42,9 @@ public class TerritoryManager : MonoBehaviour
         {
             var zone = zones[i];
             int discoveryCount = Random.Range(zone.minDiscoveries, zone.maxDiscoveries + 1);
-            var discoveries = discoveriesPerZone[i].Shuffle().ToList().GetRange(0, discoveryCount);
+            List<Discovery> discoveries = new List<Discovery>();
+            for (int d = 0; d < discoveryCount; d++)
+                discoveries.Add(GameManager.Instance.EventsManager.PopDiscovery(i));
             var territoryIndexes = new List<int>();
             for (int t = 0; t < zone.territoryCount; t++)
                 territoryIndexes.Add(t);

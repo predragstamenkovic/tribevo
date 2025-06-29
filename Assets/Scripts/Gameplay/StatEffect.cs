@@ -42,6 +42,6 @@ public class StatEffect
     }
 
     public float TimeLeft => timer;
-    public bool IsTimerDone => timer <= 0;
+    public bool IsEffectDone => timer <= 0;
     public float TimePercent => timer / activePeriod;
 }

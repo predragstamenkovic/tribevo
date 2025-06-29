@@ -36,13 +36,13 @@ public class Evolution : ScriptableObject
             return false;
 
         for (int i = 0; i < requiredEventAnd.Count; i++)
-            if (!GameManager.Instance.HasEventHappened(requiredEventAnd[i].id))
+            if (!GameManager.Instance.EventsManager.HasEventHappened(requiredEventAnd[i].id))
                 return false;
 
         hasOr = false;
         for (int i = 0; i < requiredEventOr.Count; i++)
         {
-            if (GameManager.Instance.HasEventHappened(requiredEventOr[i].id))
+            if (GameManager.Instance.EventsManager.HasEventHappened(requiredEventOr[i].id))
             {
                 hasOr = true;
                 break;

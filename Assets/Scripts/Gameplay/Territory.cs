@@ -13,7 +13,7 @@ public class Territory
         this.discovery = discovery;
     }
 
-    public GameEvent DisoveryEvent => discovery.discoveryEvent;
+    public GameEvent DisoveryEvent => discovery.DiscoveryEvent;
     public int Size => size;
-    public IReadOnlyList<StatEffect> Effects => discovery != null ? discovery.territoryEffects : new List<StatEffect>();
+    public IReadOnlyList<StatEffect> Effects => discovery != null ? discovery.TerritoryEffects : new List<StatEffect>();
 }

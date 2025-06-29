@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,7 +9,6 @@ public class Tribe
     private Dictionary<string, Evolution> evolutions;
     private Dictionary<string, Station> availableStations;
     private Dictionary<string, int> builtStations;
-    private List<StatEffect> tempEffects;
     private float evolutionPoints;
     private int popCount;
     private float popGrowthPoints;
@@ -44,7 +44,6 @@ public class Tribe
         evolutions = new Dictionary<string, Evolution>();
         availableStations = new Dictionary<string, Station>();
         builtStations = new Dictionary<string, int>();
-        tempEffects = new List<StatEffect>();
         evoCount = 0;
         evolutionPoints = 0;
         popCount = 1;
@@ -54,6 +53,7 @@ public class Tribe
         territoryPoints = 0;
         discoveryCap = GameManager.Instance.TerritoryManager.GetDiscoveryCap;
         territoryCap = GameManager.Instance.TerritoryManager.GetTerritoryCap;
+        GameManager.Instance.EffectsManager.OnEffectEnd += OnEffectEnd;
     }
 
     public void BuildStation(Station station)
@@ -66,12 +66,17 @@ public class Tribe
         for (int i = 0; i < station.effects.Count; i++)
         {
             if (station.effects[i].isTemporary)
-            { 
-                tempEffects.Add(station.effects[i]);
+            {
+                GameManager.Instance.EffectsManager.RegisterGenericEffect(station.effects[i]);
                 station.effects[i].StartEffect();
             }
             stats.ApplyEffect(station.effects[i]);
         }
+    }
+
+    private void OnEffectEnd(StatEffect effect)
+    {
+        stats.RemoveEffect(effect);
     }
 
     public void UpdateTribe()
@@ -80,15 +85,6 @@ public class Tribe
         popGrowthPoints += stats.Food - PopUtil.GetFoodRequirements(popCount);
         discoveryPoints += stats.DiscoverySpeed;
         territoryPoints += stats.TerritoryGrowth;
-
-        for (int i = 0; i < tempEffects.Count; i++)
-        {
-            tempEffects[i].UpdateTimer();
-            if (tempEffects[i].IsTimerDone)
-                stats.RemoveEffect(tempEffects[i]);
-        }
-
-        tempEffects.RemoveAll(effect => effect.IsTimerDone);
 
         int evoCap = GameManager.Instance.EvolutionsManager.GetEvolutionCap(evoCount);
         if (evolutionPoints >= evoCap)
@@ -122,7 +118,7 @@ public class Tribe
                 {
                     if (effects[i].isTemporary)
                     {
-                        tempEffects.Add(effects[i]);
+                        GameManager.Instance.EffectsManager.RegisterEventEffect(effects[i]);
                         effects[i].StartEffect();
                     }
                     stats.ApplyEffect(effects[i]);
@@ -141,7 +137,7 @@ public class Tribe
                 {
                     if (effects[i].isTemporary)
                     {
-                        tempEffects.Add(effects[i]);
+                        GameManager.Instance.EffectsManager.RegisterGenericEffect(effects[i]);
                         effects[i].StartEffect();
                     }
                     stats.ApplyEffect(effects[i]);
